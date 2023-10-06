@@ -15,8 +15,15 @@ public class PlayerController
 
     public void PlayerMove(float horizontalInput, float verticalInput)
     {
-        playerView.playerRigidbody.MovePosition( 
+        playerView.playerRigidbody.MovePosition(playerView.transform.position +
             ((verticalInput * playerView.transform.forward) + (horizontalInput * playerView.transform.right)) *
             playerModel.PlayerScriptableObject.moveSpeed * Time.deltaTime);
+    }
+
+    public void PlayerRotate(float rotationInput)
+    {
+        playerView.playerRigidbody.MoveRotation(
+            Quaternion.Euler(playerModel.PlayerScriptableObject.rotationSpeed * rotationInput * playerView.transform.up) * 
+            playerView.transform.rotation);
     }
 }

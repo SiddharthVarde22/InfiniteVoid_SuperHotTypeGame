@@ -14,6 +14,7 @@ public class PlayerView : MonoBehaviour
     void Update()
     {
         PlayerMove();
+        PlayerRotate();
     }
 
     public void SetPlayerController(PlayerController playerController)
@@ -26,6 +27,14 @@ public class PlayerView : MonoBehaviour
         if (playerInput.HorizontalInput != 0 || playerInput.VerticalInput != 0)
         {
             playerController.PlayerMove(playerInput.HorizontalInput, playerInput.VerticalInput);
+        }
+    }
+
+    void PlayerRotate()
+    {
+        if(playerInput.RotationInput != 0)
+        {
+            playerController.PlayerRotate(playerInput.RotationInput);
         }
     }
 }
