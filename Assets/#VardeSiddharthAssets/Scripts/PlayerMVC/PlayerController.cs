@@ -26,4 +26,9 @@ public class PlayerController
             Quaternion.Euler(playerModel.PlayerScriptableObject.rotationSpeed * rotationInput * playerView.transform.up) * 
             playerView.transform.rotation);
     }
+
+    public float GetPlayerRotationSpeed()
+    {
+        return playerModel.PlayerScriptableObject.rotationSpeed;
+    }
 }

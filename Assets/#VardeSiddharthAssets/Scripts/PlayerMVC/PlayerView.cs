@@ -49,4 +49,9 @@ public class PlayerView : MonoBehaviour
     {
         playerInput = ServiceLocator.Instance.GetService<InputService>(TypesOfService.InputService);
     }
+
+    public float GetPlayerRotationSpeed()
+    {
+        return playerController.GetPlayerRotationSpeed();
+    }
 }
