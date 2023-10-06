@@ -3,16 +3,23 @@ using UnityEngine;
 
 public class PlayerView : MonoBehaviour
 {
-    PlayerController playerController;
-
-    [SerializeField]
-    PlayerInput playerInput;
+    private PlayerController playerController;
+    private InputService playerInput;
 
     [SerializeField]
     public Rigidbody playerRigidbody;
 
-    void Update()
+    private void Start()
     {
+        ServiceLocator.Instance.GetService<GameObjectsCollectorService>(TypesOfService.CollecterService).playerView = this;
+    }
+
+    private void Update()
+    {
+        if (playerInput == null)
+        {
+            GetInputService();
+        }
         PlayerMove();
         PlayerRotate();
     }
@@ -22,7 +29,7 @@ public class PlayerView : MonoBehaviour
         this.playerController = playerController;
     }
 
-    void PlayerMove()
+    private void PlayerMove()
     {
         if (playerInput.HorizontalInput != 0 || playerInput.VerticalInput != 0)
         {
@@ -30,11 +37,16 @@ public class PlayerView : MonoBehaviour
         }
     }
 
-    void PlayerRotate()
+    private void PlayerRotate()
     {
-        if(playerInput.RotationInput != 0)
+        if(playerInput.RotationXInput != 0)
         {
-            playerController.PlayerRotate(playerInput.RotationInput);
+            playerController.PlayerRotate(playerInput.RotationXInput);
         }
+    }
+
+    private void GetInputService()
+    {
+        playerInput = ServiceLocator.Instance.GetService<InputService>(TypesOfService.InputService);
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerController
 {
-    PlayerModel playerModel;
-    PlayerView playerView;
+    private PlayerModel playerModel;
+    private PlayerView playerView;
 
     public PlayerController(PlayerScriptableObject playerScriptableObject, PlayerView playerView)
     {
