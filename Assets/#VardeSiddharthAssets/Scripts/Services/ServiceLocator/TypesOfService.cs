@@ -2,5 +2,6 @@
 public enum TypesOfService
 {
     InputService,
-    CollecterService
+    CollecterService,
+    BulletSpawner
 }

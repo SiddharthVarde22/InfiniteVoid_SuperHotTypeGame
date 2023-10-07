@@ -5,25 +5,29 @@ public class ShootFromWeapon : MonoBehaviour
 {
     [SerializeField]
     PlayerView playerView;
-    [SerializeField]
-    float IntervalBetweenTwoShots = 0.2f;
+
+    IShooter weponThatCanShoot;
+
     public void RegisterToShootEvent()
     {
         ServiceLocator.Instance.GetService<InputService>(TypesOfService.InputService).OnShootPressedEvent += OnShootEventTriggered;
+        playerView.SetHasGun(true);
     }
 
     public void DeRegisterToShootEvent()
     {
         ServiceLocator.Instance.GetService<InputService>(TypesOfService.InputService).OnShootPressedEvent -= OnShootEventTriggered;
+        playerView.SetHasGun(false);
     }
 
-    private void OnDisable()
-    {
-        DeRegisterToShootEvent();
-    }
     public void OnShootEventTriggered()
     {
         playerView.OnPlayerShootsBullet();
-        //shoot the bullet
+        weponThatCanShoot.Shoot();
+    }
+
+    public void SetWeonToShoot(IShooter shooterWepon)
+    {
+        this.weponThatCanShoot = shooterWepon;
     }
 }

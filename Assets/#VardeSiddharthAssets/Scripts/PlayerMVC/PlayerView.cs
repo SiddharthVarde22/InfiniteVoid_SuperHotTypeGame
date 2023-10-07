@@ -10,6 +10,7 @@ public class PlayerView : MonoBehaviour
 
     public Rigidbody playerRigidbody;
     public Transform gunHoldingPoint;
+    bool hasGun = false;
 
     private void Start()
     {
@@ -62,5 +63,20 @@ public class PlayerView : MonoBehaviour
     public void OnPlayerShootsBullet()
     {
         timeController.OnFirePressed();
+    }
+
+    public void SetHasGun(bool hasGun)
+    {
+        this.hasGun = hasGun;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IInteractable interactableObject;
+
+        if(!hasGun && other.TryGetComponent<IInteractable>(out interactableObject))
+        {
+            interactableObject.OnInteraction(gunHoldingPoint);
+        }
     }
 }

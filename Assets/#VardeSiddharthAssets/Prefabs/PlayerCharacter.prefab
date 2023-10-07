@@ -142,6 +142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5032458594737085042}
+  - component: {fileID: 2709551927214634296}
   m_Layer: 0
   m_Name: GunHolder
   m_TagString: Untagged
@@ -163,6 +164,19 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2709551927214634296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521222490420890678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083d731a69882d549b799f5841700d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerView: {fileID: 7265580495716527651}
 --- !u!1 &7265580494837633024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2554,7 @@ GameObject:
   - component: {fileID: 7265580495716527653}
   - component: {fileID: 7265580495716527651}
   - component: {fileID: 6585237757388714171}
+  - component: {fileID: 3649886532170688632}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -2649,10 +2664,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ce4ca940b903d41bc3c731a67a80c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScaleReductionSpeed: 0.05
-  timeScaleIncrementSpeed: 0.1
-  minimumTimeScale: 0.02
+  timeScaleReductionSpeed: 0.02
+  timeScaleIncrementSpeed: 0.2
+  minimumTimeScale: 0.01
   maximumTimeScale: 0.8
+--- !u!135 &3649886532170688632
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265580494837633426}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 1, z: 0.5}
 --- !u!1 &7265580494837633428
 GameObject:
   m_ObjectHideFlags: 0
