@@ -17,7 +17,7 @@ public class PlayerController
     {
         playerView.playerRigidbody.MovePosition(playerView.transform.position +
             ((verticalInput * playerView.transform.forward) + (horizontalInput * playerView.transform.right)) *
-            playerModel.PlayerScriptableObject.moveSpeed * Time.deltaTime);
+            playerModel.PlayerScriptableObject.moveSpeed * Time.fixedDeltaTime);
     }
 
     public void PlayerRotate(float rotationInput)

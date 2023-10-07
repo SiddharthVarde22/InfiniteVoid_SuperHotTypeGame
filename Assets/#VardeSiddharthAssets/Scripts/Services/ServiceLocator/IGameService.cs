@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface IGameService
 {
-    public void RegisterServive(TypesOfService typesOfService,IGameService gameService);
+    public void RegisterService(TypesOfService typesOfService,IGameService gameService);
 }

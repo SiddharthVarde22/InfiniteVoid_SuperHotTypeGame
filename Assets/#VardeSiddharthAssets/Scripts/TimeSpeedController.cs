@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class TimeSpeedController : MonoBehaviour
 {
-    //InputService playerInput;
-
     [SerializeField]
     float timeScaleReductionSpeed = 0.02f, timeScaleIncrementSpeed = 0.2f, minimumTimeScale = 0.01f, maximumTimeScale = 0.8f;
 

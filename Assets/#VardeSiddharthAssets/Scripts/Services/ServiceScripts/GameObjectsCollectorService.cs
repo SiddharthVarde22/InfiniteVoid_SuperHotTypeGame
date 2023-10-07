@@ -8,9 +8,9 @@ public class GameObjectsCollectorService : MonoBehaviour, IGameService
 
     private void OnEnable()
     {
-        RegisterServive(TypesOfService.CollecterService, this);
+        RegisterService(TypesOfService.CollecterService, this);
     }
-    public void RegisterServive(TypesOfService typesOfService, IGameService gameService)
+    public void RegisterService(TypesOfService typesOfService, IGameService gameService)
     {
         ServiceLocator.Instance.RegesterService<GameObjectsCollectorService>(typesOfService, (GameObjectsCollectorService)gameService);
     }

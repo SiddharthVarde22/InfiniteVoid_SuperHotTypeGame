@@ -3,5 +3,8 @@ public enum TypesOfService
 {
     InputService,
     CollecterService,
-    BulletSpawner
+    BulletSpawner,
+    GunSpawner,
+    EventsService,
+    EnemySpawner
 }

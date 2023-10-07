@@ -11,10 +11,10 @@ public class BulletSpawnerService : MonoBehaviour, IGameService
 
     private void OnEnable()
     {
-        RegisterServive(TypesOfService.BulletSpawner, this);
+        RegisterService(TypesOfService.BulletSpawner, this);
     }
 
-    public void RegisterServive(TypesOfService typesOfService, IGameService gameService)
+    public void RegisterService(TypesOfService typesOfService, IGameService gameService)
     {
         ServiceLocator.Instance.RegesterService<BulletSpawnerService>(typesOfService, (BulletSpawnerService)gameService);
     }

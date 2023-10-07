@@ -12,10 +12,10 @@ public class InputService : MonoBehaviour, IGameService
 
     private void OnEnable()
     {
-        RegisterServive(TypesOfService.InputService, this);
+        RegisterService(TypesOfService.InputService, this);
     }
 
-    public void RegisterServive(TypesOfService typeOfService, IGameService gameService)
+    public void RegisterService(TypesOfService typeOfService, IGameService gameService)
     {
         ServiceLocator.Instance.RegesterService<InputService>(typeOfService, (InputService)gameService);
     }
