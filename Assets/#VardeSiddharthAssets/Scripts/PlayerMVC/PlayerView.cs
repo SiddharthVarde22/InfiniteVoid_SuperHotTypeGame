@@ -5,9 +5,11 @@ public class PlayerView : MonoBehaviour
 {
     private PlayerController playerController;
     private InputService playerInput;
-
     [SerializeField]
+    private TimeSpeedController timeController;
+
     public Rigidbody playerRigidbody;
+    public Transform gunHoldingPoint;
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class PlayerView : MonoBehaviour
         if (playerInput.HorizontalInput != 0 || playerInput.VerticalInput != 0)
         {
             playerController.PlayerMove(playerInput.HorizontalInput, playerInput.VerticalInput);
+            timeController.IncreaseTimeScale();
         }
     }
 
@@ -42,6 +45,7 @@ public class PlayerView : MonoBehaviour
         if(playerInput.RotationXInput != 0)
         {
             playerController.PlayerRotate(playerInput.RotationXInput);
+            timeController.IncreaseTimeScale();
         }
     }
 
@@ -53,5 +57,10 @@ public class PlayerView : MonoBehaviour
     public float GetPlayerRotationSpeed()
     {
         return playerController.GetPlayerRotationSpeed();
+    }
+
+    public void OnPlayerShootsBullet()
+    {
+        timeController.OnFirePressed();
     }
 }

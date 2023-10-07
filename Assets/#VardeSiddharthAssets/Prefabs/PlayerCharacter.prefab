@@ -2539,6 +2539,7 @@ GameObject:
   - component: {fileID: 7265580495716527652}
   - component: {fileID: 7265580495716527653}
   - component: {fileID: 7265580495716527651}
+  - component: {fileID: 6585237757388714171}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -2633,7 +2634,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94dde37fa3d45f44a3ee3de451e4fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeController: {fileID: 6585237757388714171}
   playerRigidbody: {fileID: 7265580495716527653}
+  gunHoldingPoint: {fileID: 5032458594737085042}
+--- !u!114 &6585237757388714171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265580494837633426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ce4ca940b903d41bc3c731a67a80c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScaleReductionSpeed: 0.05
+  timeScaleIncrementSpeed: 0.1
+  minimumTimeScale: 0.02
+  maximumTimeScale: 0.8
 --- !u!1 &7265580494837633428
 GameObject:
   m_ObjectHideFlags: 0
