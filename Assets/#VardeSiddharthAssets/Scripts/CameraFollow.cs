@@ -23,16 +23,14 @@ public class CameraFollow : MonoBehaviour
             GetPlayerRefrence();
             GetRotationSpeed();
             rotation = playerTransform.rotation.eulerAngles;
+            ChangeCameraPosition();
         }
 
-        if(playerInput == null)
+        if (playerInput == null)
         {
             GetInputService();
         }
-        ChangeCameraPosition();
         ChangeCameraRotation();
-
-        Debug.Log(rotation.x);
     }
 
     private void ChangeCameraPosition()
@@ -76,5 +74,4 @@ public class CameraFollow : MonoBehaviour
             rotation.x = maxXRotation;
         }
     }
-
 }

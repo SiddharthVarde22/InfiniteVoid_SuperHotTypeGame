@@ -23,6 +23,6 @@ public class InputService : MonoBehaviour, IGameService
         HorizontalInput = Input.GetAxis("Horizontal");
         VerticalInput = Input.GetAxis("Vertical");
         RotationXInput = Input.GetAxis("Mouse X");
-        RotationYInput = Input.GetAxis("Mouse Y");
+        RotationYInput = Input.GetAxis("Mouse Y") * -1f;
     }
 }
