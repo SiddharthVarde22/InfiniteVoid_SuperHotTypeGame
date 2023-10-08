@@ -28,26 +28,43 @@ public class AttackEnemyState : BaseEnemyState
     {
         playerTransform = ServiceLocator.Instance.GetService<GameObjectsCollectorService>(
             TypesOfService.CollecterService).playerView.GetComponent<Transform>();
-        timetoWaitToShoot = timeIntervalToShoot;
+        SetRandomTimeToWait(timeIntervalToShoot);
 
         enemyAnimator.Play("EnemyShoot");
-        navMeshAgent.ResetPath();
+
+        if (navMeshAgent.isOnNavMesh)
+        {
+            navMeshAgent.ResetPath();
+        }
+        else
+        {
+            navMeshAgent.Warp(enemyTransform.position);
+        }
     }
 
     public override void OnStateExit()
     {
-        navMeshAgent.ResetPath();
+        if (navMeshAgent.isOnNavMesh)
+        {
+            navMeshAgent.ResetPath();
+        }
     }
 
     public override void UpdateState()
     {
         if(CheckIfIsTooFarFromPlayer())
         {
-            navMeshAgent.destination = playerTransform.position;
+            if (navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.destination = playerTransform.position;
+            }
         }
         else
         {
-            navMeshAgent.ResetPath();
+            if (navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.ResetPath();
+            }
             enemyTransform.LookAt(playerTransform);
             timetoWaitToShoot -= Time.deltaTime;
             if(timetoWaitToShoot <= 0)
@@ -65,6 +82,11 @@ public class AttackEnemyState : BaseEnemyState
     private void Shoot()
     {
         enemyController.Shoot();
-        timetoWaitToShoot = timeIntervalToShoot;
+        SetRandomTimeToWait(timeIntervalToShoot);
+    }
+
+    private void SetRandomTimeToWait(float maxTime)
+    {
+        timetoWaitToShoot = Random.Range(1f, maxTime);
     }
 }

@@ -45,4 +45,12 @@ public class EnemyStateMachine : MonoBehaviour
     {
         currentEnemyState?.UpdateState();
     }
+
+    private void OnEnable()
+    {
+        if (!navMeshAgent.isOnNavMesh)
+        {
+            navMeshAgent.transform.position = Vector3.zero;
+        }
+    }
 }

@@ -23,6 +23,8 @@ public class EnemyView : MonoBehaviour, IDamagable
     public void DisableEnemy()
     {
         gameObject.SetActive(false);
+        ServiceLocator.Instance.GetService<GunSpawnerService>(TypesOfService.GunSpawner).SpawnAGun(transform.position + Vector3.up * 1);
+        //Spawn Particles
     }
 
     public void ChangeEnemyState(TypesOfEnemyStates enemyState)
@@ -48,5 +50,7 @@ public class EnemyView : MonoBehaviour, IDamagable
     public void GetDamage()
     {
         enemyController.DisableEnemy();
+        ServiceLocator.Instance.GetService<ParticleSpawnerService>(TypesOfService.ParticleSpawner).
+            GetParticles(transform.position + Vector3.up * 1);
     }
 }

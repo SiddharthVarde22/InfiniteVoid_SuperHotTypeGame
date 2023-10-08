@@ -22,6 +22,10 @@ public class PetrolEnemyState : BaseEnemyState
     }
     public override void OnStateEnter()
     {
+        if (navMeshAgent.isActiveAndEnabled)
+        {
+            navMeshAgent.ResetPath();
+        }
         enemyAnimator.Play("Run");
         ChangeTargetPosition();
         ServiceLocator.Instance.GetService<EventService>(TypesOfService.EventsService).OnCombatStartedEvent += OnCombatStarted;
@@ -50,6 +54,6 @@ public class PetrolEnemyState : BaseEnemyState
 
     private void OnCombatStarted()
     {
-        //tell controller to go to attack state
+        enemyController.SetEnemyState(TypesOfEnemyStates.Attack);
     }
 }

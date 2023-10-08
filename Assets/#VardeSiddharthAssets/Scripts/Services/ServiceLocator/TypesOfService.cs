@@ -6,5 +6,6 @@ public enum TypesOfService
     BulletSpawner,
     GunSpawner,
     EventsService,
-    EnemySpawner
+    EnemySpawner,
+    ParticleSpawner
 }
