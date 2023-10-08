@@ -1,17 +1,20 @@
 using UnityEngine.AI;
 using UnityEngine;
 
-public class PetrolState : BaseEnemyState
+public class PetrolEnemyState : BaseEnemyState
 {
     EnemyController enemyController;
+    Animator enemyAnimator;
     NavMeshAgent navMeshAgent;
     Vector3 randomTargetPosition;
     int maxXposition, minXPosition, maxZPosition, minZPosition;
 
-    public PetrolState(EnemyController enemyController,NavMeshAgent navMeshAgent,int maxX, int minX,int maxZ, int minZ)
+    public PetrolEnemyState(EnemyController enemyController, NavMeshAgent navMeshAgent, Animator enemyAnimator,
+        int maxX, int minX, int maxZ, int minZ)
     {
         this.enemyController = enemyController;
         this.navMeshAgent = navMeshAgent;
+        this.enemyAnimator = enemyAnimator;
         this.maxXposition = maxX;
         this.minXPosition = minX;
         this.maxZPosition = maxZ;
@@ -19,6 +22,7 @@ public class PetrolState : BaseEnemyState
     }
     public override void OnStateEnter()
     {
+        enemyAnimator.Play("Run");
         ChangeTargetPosition();
         ServiceLocator.Instance.GetService<EventService>(TypesOfService.EventsService).OnCombatStartedEvent += OnCombatStarted;
     }
@@ -46,7 +50,6 @@ public class PetrolState : BaseEnemyState
 
     private void OnCombatStarted()
     {
-        //tell controller to delete collider
         //tell controller to go to attack state
     }
 }

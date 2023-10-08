@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class PlayerView : MonoBehaviour, IDamagable
 {
     private PlayerController playerController;
     private InputService playerInput;
@@ -78,5 +78,10 @@ public class PlayerView : MonoBehaviour
         {
             interactableObject.OnInteraction(gunHoldingPoint);
         }
+    }
+
+    public void GetDamage()
+    {
+        //player die
     }
 }

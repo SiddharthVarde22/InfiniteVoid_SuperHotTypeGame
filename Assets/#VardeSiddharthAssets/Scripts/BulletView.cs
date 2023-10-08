@@ -23,7 +23,13 @@ public class BulletView : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //check for damagables
+        IDamagable damagableObject;
+
+        if(collision.transform.TryGetComponent<IDamagable>(out damagableObject))
+        {
+            damagableObject.GetDamage();
+        }
+
         Disable();
     }
 }
