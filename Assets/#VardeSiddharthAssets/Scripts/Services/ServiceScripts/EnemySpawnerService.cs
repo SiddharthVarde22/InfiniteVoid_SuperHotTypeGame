@@ -7,25 +7,33 @@ public class EnemySpawnerService : MonoBehaviour, IGameService
     [SerializeField]
     EnemyView enemyViewPrefab;
     [SerializeField]
+    int maxNumberOfEnemies = 20;
+    [SerializeField]
     int maxEnemyTogether = 4;
     [SerializeField]
     float maxXPosition = 30, minXPosition = -30, maxZPosition = 30, minZPosition = -30;
 
     int enemyCount = 0;
+    int remainingNumberOfEnemies;
     GenericObjectPool<EnemyController> enemyObjectPool = new GenericObjectPool<EnemyController>();
     Vector3 positionForEnemy;
 
     private void OnEnable()
     {
         RegisterService(TypesOfService.EnemySpawner, this);
+        remainingNumberOfEnemies = maxNumberOfEnemies;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(enemyCount < maxEnemyTogether)
+        if ((remainingNumberOfEnemies > 0) && (enemyCount < maxEnemyTogether))
         {
             SpawnEnemy();
+        }
+        else if(remainingNumberOfEnemies <= 0 && enemyCount <= 0)
+        {
+            ServiceLocator.Instance.GetService<LevelLoaderService>(TypesOfService.LevelLoader).LoadNextLevel();
         }
     }
 
@@ -56,6 +64,7 @@ public class EnemySpawnerService : MonoBehaviour, IGameService
     {
         enemyObjectPool.ReturnObjectInPool(enemyController);
         enemyCount--;
+        remainingNumberOfEnemies--;
     }
 
     public void RegisterService(TypesOfService typesOfService, IGameService gameService)

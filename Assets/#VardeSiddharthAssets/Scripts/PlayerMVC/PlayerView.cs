@@ -82,6 +82,6 @@ public class PlayerView : MonoBehaviour, IDamagable
 
     public void GetDamage()
     {
-        //player die
+        ServiceLocator.Instance.GetService<LevelLoaderService>(TypesOfService.LevelLoader).LoadLevel(3);
     }
 }

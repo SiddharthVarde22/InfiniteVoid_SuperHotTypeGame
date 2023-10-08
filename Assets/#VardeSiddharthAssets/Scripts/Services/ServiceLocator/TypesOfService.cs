@@ -7,5 +7,7 @@ public enum TypesOfService
     GunSpawner,
     EventsService,
     EnemySpawner,
-    ParticleSpawner
+    ParticleSpawner,
+    SoundService,
+    LevelLoader
 }

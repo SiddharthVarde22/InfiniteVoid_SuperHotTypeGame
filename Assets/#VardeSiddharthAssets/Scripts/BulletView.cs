@@ -12,6 +12,7 @@ public class BulletView : MonoBehaviour
         transform.SetPositionAndRotation(position, rotation);
         gameObject.SetActive(true);
         bulletRigidbody.AddForce(initialForce * transform.forward, ForceMode.Impulse);
+        ServiceLocator.Instance.GetService<SoundService>(TypesOfService.SoundService).PlayGunShotSound(position);
     }
 
     public void Disable()

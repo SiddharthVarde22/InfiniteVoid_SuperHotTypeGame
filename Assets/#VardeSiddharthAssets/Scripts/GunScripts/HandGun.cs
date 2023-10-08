@@ -12,6 +12,8 @@ public class HandGun : MonoBehaviour, IInteractable, IShooter
     Rigidbody gunRigidbody;
     [SerializeField]
     float intervalToShootBullet = 0.25f;
+    [SerializeField]
+    Light pointLight;
 
     bool canShoot = true;
     int remainingNumberOfBullets = 5;
@@ -26,6 +28,7 @@ public class HandGun : MonoBehaviour, IInteractable, IShooter
         parentWeponSlot.RegisterToShootEvent();
         gunRigidbody.isKinematic = true;
         transform.GetComponent<BoxCollider>().isTrigger = true;
+        Destroy(pointLight);
     }
 
     public void Shoot()
