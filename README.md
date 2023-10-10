@@ -9,12 +9,12 @@ Where time moves only when player moves, Movements/Rotation/Shooting action coun
 ### [Infinite Void Gameplay Video](https://youtu.be/hNrp3PSq44o)
 
 ### Patterns Used
- - Service Locator
- - Generic Singleton
- - Generic Object Pool
- - Observer
- - State Machine
- - MVC
+ - Service Locator - Used to hold all the services in the level
+ - Generic Singleton - Used to create Service locator as a Singleton (All of it's child classes will be a singletons)
+ - Generic Object Pool - Used to generate Object pooling system for Bullets, Particle systems, Enemies etc.
+ - Observer - Used to create a event system like When player presses right click
+ - State - Used to create Finite state machine for the enemies.
+ - MVC - Used to create behaviours of Player, Enemies, Bullets etc.
 
 ### Controls
  - W/A/S/D to Move
